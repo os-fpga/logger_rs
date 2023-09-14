@@ -56,6 +56,8 @@ jobs:
               curl -C - -O https://cmake.org/files/v3.20/cmake-3.20.0-linux-x86_64.tar.gz
               tar xvzf cmake-3.20.0-linux-x86_64.tar.gz
               ln -sv $PWD/cmake-3.20.0-linux-x86_64/bin/cmake /usr/bin/cmake
+              which cmake
+              cmake --version
           
       - name: Checkout code
         uses: actions/checkout@v3
