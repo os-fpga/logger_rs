@@ -111,3 +111,42 @@ jobs:
 
       - name: execute
         run: cd build && ./example            
+
+  build_windows-msvc:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: cmd
+    steps:
+      - name: Cancel previous
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.13.0
+        with:
+            cmake-version: '3.21.3'
+    
+      - name: Use cmake
+        run: cmake --version
+          
+      - run: git config --global core.autocrlf input
+        shell: bash
+          
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+            submodules: true
+            
+      - name: Build
+        run: |
+             call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+             set CMAKE_GENERATOR=Ninja
+             set CC=cl
+             set CXX=cl
+             set CPU_CORES=%NUMBER_OF_PROCESSORS%
+             mkdir build && cmake .. && make
+
+      - name: execute
+        run: cd build && ./example                 
