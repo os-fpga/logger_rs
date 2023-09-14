@@ -1,0 +1,31 @@
+name: Check Compatibilty with all OS
+on:
+  push:
+
+jobs:
+  build_ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel previous
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+          
+      # Checks-out your repository under $GITHUB_WORKSPACE
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+            submodules: true
+
+      - name: install GCC and cmake
+        run: |
+            gcc --version && g++ version
+            sudo apt install -y cmake
+      - name: build
+        run:
+            mkdir build 
+            cd build && cmake .. && make
+
+      - name: execute
+        run: ./example
+            
