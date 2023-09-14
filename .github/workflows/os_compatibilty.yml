@@ -11,7 +11,6 @@ jobs:
         with:
           access_token: ${{ github.token }}
           
-      # Checks-out your repository under $GITHUB_WORKSPACE
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -21,8 +20,10 @@ jobs:
         run: |
             gcc --version && g++ --version
             sudo apt install -y cmake
+            
       - name: build
         run:
+            ls -l
             mkdir build 
             cd build && cmake .. && make
 
