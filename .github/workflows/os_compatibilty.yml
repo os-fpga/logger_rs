@@ -58,7 +58,7 @@ jobs:
               yum install -y devtoolset-11-gcc-c++
           
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
             submodules: true
 
