@@ -97,7 +97,8 @@ jobs:
 
       - name: install GCC and cmake
         run: |
-              brew install gcc
+              gcc-13 --version
+              echo 'CC=gcc-13' >> $GITHUB_ENV
   
       
       - name: show version
