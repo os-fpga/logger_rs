@@ -97,8 +97,7 @@ jobs:
 
       - name: install GCC and cmake
         run: |
-              echo 'CC=`which gcc`' >> $GITHUB_ENV
-              echo 'CXX=`which g++`' >> $GITHUB_ENV
+              brew install gcc g++
   
       
       - name: show version
