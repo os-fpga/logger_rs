@@ -66,6 +66,7 @@ jobs:
 
       - name: install GCC and cmake
         run: |
+              ls -l
               echo 'CC=/opt/rh/devtoolset-11/root/usr/bin/gcc' >> $GITHUB_ENV
               echo 'CXX=/opt/rh/devtoolset-11/root/usr/bin/g++' >> $GITHUB_ENV        
       - name: show version
