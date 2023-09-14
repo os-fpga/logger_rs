@@ -146,7 +146,7 @@ jobs:
              set CC=cl
              set CXX=cl
              set CPU_CORES=%NUMBER_OF_PROCESSORS%
-             mkdir build && cd build && cmake .. && make all
+             mkdir build && cd build && cmake .. && cmake --build .
 
       - name: execute
         run: cd build && ./example                 
