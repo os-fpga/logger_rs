@@ -97,7 +97,7 @@ jobs:
 
       - name: install GCC and cmake
         run: |
-              brew install gcc g++
+              brew install gcc
   
       
       - name: show version
