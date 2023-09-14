@@ -19,7 +19,7 @@ jobs:
 
       - name: install GCC and cmake
         run: |
-            gcc --version && g++ version
+            gcc --version && g++ --version
             sudo apt install -y cmake
       - name: build
         run:
