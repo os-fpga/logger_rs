@@ -71,7 +71,7 @@ jobs:
       - name: show version
         run: |
               source /opt/rh/devtoolset-11/enable  
-              gcc --version && g++ --version && cmake --version
+              gcc --version && g++ --version
             
       - name: build
         run: |
