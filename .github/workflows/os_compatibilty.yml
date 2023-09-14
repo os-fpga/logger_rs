@@ -49,6 +49,14 @@ jobs:
               yum remove -y git*
               yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
               yum install -y git
+          
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+            submodules: true
+
+      - name: install GCC and cmake
+        run: |
               yum install -y centos-release-scl-rh
               yum install -y devtoolset-11
               yum install -y devtoolset-11-toolchain
@@ -58,17 +66,9 @@ jobs:
               ln -sv $PWD/cmake-3.20.0-linux-x86_64/bin/cmake /usr/bin/cmake
               which cmake
               cmake --version
-          
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-            submodules: true
-
-      - name: install GCC and cmake
-        run: |
-              ls -l
               echo 'CC=/opt/rh/devtoolset-11/root/usr/bin/gcc' >> $GITHUB_ENV
               echo 'CXX=/opt/rh/devtoolset-11/root/usr/bin/g++' >> $GITHUB_ENV        
+      
       - name: show version
         run: |
               source /opt/rh/devtoolset-11/enable  
