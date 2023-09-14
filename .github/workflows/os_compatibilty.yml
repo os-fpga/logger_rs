@@ -97,13 +97,12 @@ jobs:
 
       - name: install GCC and cmake
         run: |
-              gcc-13 --version
               echo 'CC=gcc-13' >> $GITHUB_ENV
-  
+              echo 'CXX=g++-13' >> $GITHUB_ENV
       
       - name: show version
         run: |  
-              gcc --version && g++ --version && cmake --version
+              gcc-13 --version && g++-13 --version && cmake --version
             
       - name: build
         run: |
