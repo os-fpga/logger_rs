@@ -81,4 +81,33 @@ jobs:
 
       - name: execute
         run: cd build && ./example
+
+  build_macos:
+    runs-on: macos-latest
+    steps:
+      - name: Cancel previous
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+  
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+            submodules: true
+
+      - name: install GCC and cmake
+        run: |
+              which cmake
+              cmake --version
+      
+      - name: show version
+        run: |  
+              gcc --version && g++ --version
             
+      - name: build
+        run: |
+            mkdir build 
+            cd build && cmake .. && make
+
+      - name: execute
+        run: cd build && ./example            
