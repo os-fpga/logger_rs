@@ -55,7 +55,7 @@ jobs:
               yum install -y devtoolset-11-gcc-c++
               curl -C - -O https://cmake.org/files/v3.20/cmake-3.20.0-linux-x86_64.tar.gz
               tar xvzf cmake-3.20.0-linux-x86_64.tar.gz
-              ln -s $PWD/cmake-3.20.0-linux-x86_64/bin/cmake /usr/bin/cmake
+              ln -sv $PWD/cmake-3.20.0-linux-x86_64/bin/cmake /usr/bin/cmake
           
       - name: Checkout code
         uses: actions/checkout@v3
@@ -65,7 +65,7 @@ jobs:
       - name: install GCC and cmake
         run: |
             source /opt/rh/devtoolset-11/enable  
-            gcc --version && g++ --version
+            gcc --version && g++ --version && cmake --version
             
       - name: build
         run: |
