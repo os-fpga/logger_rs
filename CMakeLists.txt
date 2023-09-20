@@ -3,16 +3,10 @@ project(spdlog_examples CXX)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/spdlog/include)
 message(STATUS "spdlog include directory ${CMAKE_CURRENT_SOURCE_DIR}/spdlog/include")
+find_package(Threads)
 # ---------------------------------------------------------------------------------------
 # Example of using header only
 # ---------------------------------------------------------------------------------------
 add_executable(example example.cpp)
-if(NOT WIN)
-  message(STATUS "I am here **** in UNIX")
-  target_link_libraries(example PUBLIC pthread)
-else()
-  message(STATUS "I am here ****")
-  find_package(Threads)
-  target_link_libraries(example PUBLIC Threads::Threads)
-endif()
+target_link_libraries(example PUBLIC Threads::Threads)
 
