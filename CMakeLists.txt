@@ -8,6 +8,7 @@ message(STATUS "spdlog include directory ${CMAKE_CURRENT_SOURCE_DIR}/spdlog/incl
 # ---------------------------------------------------------------------------------------
 add_executable(example example.cpp)
 if(NOT WIN)
+  message(STATUS "I am here **** in UNIX")
   target_link_libraries(example PUBLIC pthread)
 else()
   message(STATUS "I am here ****")
