@@ -149,4 +149,4 @@ jobs:
              mkdir build && cd build && cmake .. && cmake --build .
 
       - name: execute
-        run: cd build && ./example                 
+        run: .\build\example                 
